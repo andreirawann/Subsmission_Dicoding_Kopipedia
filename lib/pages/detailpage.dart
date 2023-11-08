@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kopipedia/pages/widgets/kopi_data.dart';
 
-class DetailPage extends StatefulWidget {
+class DetailPage extends StatelessWidget {
   final KopiData kopi;
 
-  const DetailPage({super.key, required this.kopi});
+  const DetailPage({Key? key, required this.kopi}) : super(key: key);
 
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +15,7 @@ class _DetailPageState extends State<DetailPage> {
           children: [
             Stack(
               children: [
-                Image.asset(widget.kopi.imageAsset),
+                Image.asset(kopi.imageAsset),
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -47,7 +42,7 @@ class _DetailPageState extends State<DetailPage> {
             Container(
               margin: const EdgeInsets.only(top: 16.0),
               child: Text(
-                widget.kopi.name,
+                kopi.name,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 30,
@@ -67,7 +62,7 @@ class _DetailPageState extends State<DetailPage> {
                       const SizedBox(
                         height: 8,
                       ),
-                      Text(widget.kopi.location),
+                      Text(kopi.location),
                     ],
                   ),
                   Column(
@@ -76,7 +71,7 @@ class _DetailPageState extends State<DetailPage> {
                       const SizedBox(
                         height: 8,
                       ),
-                      Text(widget.kopi.rating),
+                      Text(kopi.rating),
                     ],
                   )
                 ],
@@ -85,7 +80,7 @@ class _DetailPageState extends State<DetailPage> {
             Container(
               padding: const EdgeInsets.all(6.0),
               child: Text(
-                widget.kopi.description,
+                kopi.description,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 16,
@@ -97,7 +92,7 @@ class _DetailPageState extends State<DetailPage> {
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: widget.kopi.imageSliders.map((imageSliders) {
+                children: kopi.imageSliders.map((imageSliders) {
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
